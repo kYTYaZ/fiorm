@@ -45,7 +45,7 @@ func TestSimpleTx(t *testing.T) {
 	user3.Birthday = mysql.NullTime{Time: time.Now(), Valid: false}
 
 	da := fiorm.DataAccept()
-	tx := da.BeginTx()
+	tx := da.BeginTranction()
 
 	tx.InsertItem(&user3)
 
@@ -59,7 +59,7 @@ func TestSimpleTx(t *testing.T) {
 	go insert(tx, &user2, &wg, 0)
 
 	wg.Wait()
-	tx.EndTx()
+	tx.EndTranction()
 }
 
 func insert(tx *fiorm.TxDB, value interface{}, wg *sync.WaitGroup, idx int) {

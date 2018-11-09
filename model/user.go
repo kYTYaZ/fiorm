@@ -16,7 +16,7 @@ type User struct {
 	NullAge    sql.NullInt64
 	Email      string `gorm:"type:varchar(100);not null"`
 	NullString string `gorm:"size:255"` // 设置字段大小为255
-	Address    string
+	Address    string `gorm:"type:varchar(255)"`
 	DeptName   string `gorm:"-"` // 忽略本字段(关联部门表用于查询显示)
 	Birthday   mysql.NullTime
 	DeptId     sql.NullInt64

@@ -12,16 +12,16 @@ type TxDB struct {
 	Error error
 }
 
-// BeginTx 开始事务
-func (t *FiDB) BeginTx() *TxDB {
+// BeginTranction 开始事务
+func (t *FiDB) BeginTranction() *TxDB {
 	var tx = new(TxDB)
 	tx.db = db.Begin()
 
 	return tx
 }
 
-// EndTx 结束事务
-func (t *TxDB) EndTx() {
+// EndTranction 结束事务
+func (t *TxDB) EndTranction() {
 	if t.db.Error != nil || t.Error != nil {
 		t.db.Rollback()
 		fmt.Println(t.Error)

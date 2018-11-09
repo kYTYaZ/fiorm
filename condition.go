@@ -4,7 +4,7 @@ import "github.com/jinzhu/gorm"
 
 // Query 查询条件
 type Query struct {
-	db *gorm.DB
+	db *gorm.DB //局部
 }
 
 // Where 查询条件
